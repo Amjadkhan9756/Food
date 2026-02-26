@@ -10,5 +10,20 @@ app.use(express.json());
 app.get("/",(req,res)=>{
     res.send("hello  world"); 
 });
-app.use("/api/auth",authRoutes)
+app.use("/api/auth",authRoutes);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports=app;
