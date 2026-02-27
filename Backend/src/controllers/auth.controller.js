@@ -2,6 +2,7 @@ const userModel=require("../models/user.model.js");
 const bcrypt=require("bcryptjs");
 const jwt=require("jsonwebtoken");
 
+
 async function registerUser(req,res){
     const {fullName,email,password}=req.body;
     const isUserAlreadyExist = await userModel.findOne({
@@ -22,7 +23,7 @@ async function registerUser(req,res){
     })
     const token=jwt.sign({
         id:user._id,    
-    },"b27b84544068dbaaba6aa8a8bcd8044c")
+    },process.env.JWT_SECRET)
 
     res.cookie("token",token);
 
@@ -64,7 +65,7 @@ async function loginUser(req, res) {
 
     const token = jwt.sign({
         id: user._id,
-    },"b27b84544068dbaaba6aa8a8bcd8044c")
+    },process.env.JWT_SECRET)
 
     res.cookie("token", token)
 
@@ -78,7 +79,13 @@ async function loginUser(req, res) {
     })
 }
 
+ function logoutUser(req,res){
+    res.clearCookie("token");
+    res.status(200).json({
+        message:"user logged out successfully "
+    });
 
+ }
 
 
 
@@ -95,5 +102,6 @@ async function loginUser(req, res) {
 
 module.exports={
     registerUser,
-    loginUser
+    loginUser,
+    logoutUser
 }
