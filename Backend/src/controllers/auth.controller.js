@@ -5,38 +5,40 @@ const foodPartnerModel = require("../models/foodpartner.model.js");
 
 
 async function registerUser(req, res) {
+
     const { fullName, email, password } = req.body;
-    const isUserAlreadyExist = await userModel.findOne({
+
+    const isUserAlreadyExists = await userModel.findOne({
         email
-    });
-
-    if (isUserAlreadyExist) {
-        return res.status(400).json({ message: "user allready exist " });
-
-    }
-    const hashPassword = await bcrypt.hash(password, 10);
-
-    const user = await userModel.create({
-        name,
-        email,
-        password: hashPassword,
-
     })
+
+    if (isUserAlreadyExists) {
+        return res.status(400).json({
+            message: "User already exists"
+        })
+    }
+
+const hashedPassword = await bcrypt.hash(password.toString(), 10);
+    const user = await userModel.create({
+        fullName,
+        email,
+        password: hashedPassword
+    })
+
     const token = jwt.sign({
         id: user._id,
     }, process.env.JWT_SECRET)
 
-    res.cookie("token", token);
+    res.cookie("token", token)
 
     res.status(201).json({
-        message: "user register successfully ",
+        message: "User registered successfully",
         user: {
             _id: user._id,
             email: user.email,
             fullName: user.fullName
         }
-    });
-
+    })
 
 }
 
