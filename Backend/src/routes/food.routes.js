@@ -1,5 +1,5 @@
 const express = require("express");
-const foodContoller = require("../controllers/food.controller.js");
+const foodController = require("../controllers/food.controller.js");
 const authMiddleware = require("../middleware/auth.middleware.js");
 const multer = require("multer");
 
@@ -9,12 +9,19 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// POST /api/food [protected, with image upload]
+// POST /api/food
 router.post(
     "/",
     authMiddleware.authFoodPartnerMiddleware,
-    upload.single("video"),  // file key must match frontend
-    foodContoller.createFood
+    upload.single("video"),
+    foodController.createFood
+);
+
+// GET /api/food
+router.get(
+    "/",
+    authMiddleware.authUserMiddleware,
+    foodController.getFoodItems
 );
 
 module.exports = router;
