@@ -10,9 +10,10 @@ function AppRoutes(){
         <>
         <Router>
             <Routes>
-                <Route path='/' element={<Home/>}/>
                 
                 <Route path='/user/register' element={<UserRegister/>}/>
+                                <Route path='/' element={<Home/>}/>
+
             </Routes>
         </Router>
         </>
