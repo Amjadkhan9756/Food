@@ -28,3 +28,51 @@
     gap:var(--space-5);
 }
 .auth-card header {text-align: center;}
+
+.auth-title {
+    font-size:1.5rem;
+    font-weight:600;
+    letter-spacing: .5px;
+    margin-bottom: var(--space-2);
+
+}
+
+.auth-subtitle {
+    font-size:.85rem;
+    color:var(--color-text-secondary);
+
+}
+
+from.auth-from {display: flex; flex-direction: column; gap: var(--space-4);}
+
+.field-group {display: flex; flex-direction: column; gap:4px}
+
+
+.field-group label {
+    font-size :.75rem;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.field-group input {
+    appearance: none;
+    border:1px solid var(--color-border);
+    background:var(--color-surface-alt);
+    padding : 10px 12px;
+    font:inherit;
+    border-radius: var(--radius-sm);
+    outline: none;
+    color:var(--color-text);
+    transition: border-color var(--transition-base),background var(--transition-base),box-shadow var(--transition-base);
+    width: 100%;
+    min-width: 0;
+}
+
+.field-group input:focus-visible {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 55%, transparent);
+    background: var(--color-surface);
+}
+
