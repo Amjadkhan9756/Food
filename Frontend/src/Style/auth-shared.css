@@ -96,3 +96,14 @@ button.auth-submit{
 
 
 }
+
+button.auth-submit:hover {background:var(--color-accent-hover);}
+button.auth-submit:active {transition:translateY(1px);}
+button.auth-submit:focus-visible {autline 2px solid var(--color-accent-hover); outline-offset: 2px;}
+
+
+.auth-alt-action{
+    text-align: center;
+    font-size: .85rem;
+    color:var(--color-text-secondary);
+}
