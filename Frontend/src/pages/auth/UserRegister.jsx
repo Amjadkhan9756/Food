@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../../Style/auth-shared.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import "../../Style/auth-shared.css";
+
 const UserRegister = () => {
 
     const navigate = useNavigate();
