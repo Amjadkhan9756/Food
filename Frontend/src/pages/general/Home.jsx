@@ -32,7 +32,7 @@ const Home = () => {
 
 
     async function saveVideo(item) {
-        const response = await axios.post("http://localhost:3000/api/food/save", { foodId: item._id }, { withCredentials: true })
+        const response = await axios.post("http://localhost:8080/api/food/save", { foodId: item._id }, { withCredentials: true })
 
         if (response.data.save) {
             setVideos((prev) => prev.map((v) => v._id === item._id ? { ...v, savesCount: v.savesCount + 1 } : v))

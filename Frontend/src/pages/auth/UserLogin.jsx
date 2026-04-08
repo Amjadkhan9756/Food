@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../Style/auth-shared.css"
+import "../../style/auth-shared.css"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
