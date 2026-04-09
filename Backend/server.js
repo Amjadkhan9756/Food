@@ -6,6 +6,7 @@ const connectDB = require("./src/db/db.js");
 
 connectDB();
 
+
 app.listen(8080, () => {
     console.log("server is connected");
 });
