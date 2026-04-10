@@ -12,3 +12,11 @@
   border-top: 1px solid var(--color-border);
   z-index: 50;
 }
+
+.bottom-nav_inner{
+  max-width: 720px;
+  margin: 0 auto;
+  height: 100%;
+  display: grid;
+  
+}
