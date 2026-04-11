@@ -1,18 +1,14 @@
-const ImageKit = require("imagekit");
+const fs = require('fs');
+const path = require('path');
 
-const imagekit = new ImageKit({
-    publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
-    privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
-    urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
-});
-
-async function uploadFile(file, filename) {
-    const result = await imagekit.upload({
-        file: file,
-        fileName: filename
-    });
-
-    return result;
+async function uploadFile(file, fileName) {
+    const dir = path.join(__dirname, '../../videos');
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+    }
+    const filePath = path.join(dir, fileName);
+    fs.writeFileSync(filePath, file);
+    return { url: `http://localhost:8080/videos/${fileName}` };
 }
 
 module.exports = {

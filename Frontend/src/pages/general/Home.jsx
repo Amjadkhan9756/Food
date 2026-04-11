@@ -11,6 +11,7 @@ const Home = () => {
         axios.get("http://localhost:8080/api/food", { withCredentials: true })
             .then(res => {
                 console.log(res.data)
+                console.log('Videos:', res.data.foodItems)
                 setVideos(res.data.foodItems)
             })
             .catch(() => {

@@ -20,7 +20,6 @@ router.post(
 // GET /api/food
 router.get(
     "/",
-    authMiddleware.authUserMiddleware,
     foodController.getFoodItems
 );
 

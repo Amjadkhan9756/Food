@@ -54,6 +54,8 @@ const ReelFeed = ({ items = [], onLike, onSave, emptyMessage = 'No videos yet.' 
               playsInline
               loop
               preload="metadata"
+              controls
+              onError={(e) => console.error('Video failed to load:', item.video, e)}
             />
 
             <div className="reel-overlay">
