@@ -44,7 +44,6 @@ const hashedPassword = await bcrypt.hash(password.toString(), 10);
 
 
 
-
 async function loginUser(req, res) {
 
     const { email, password } = req.body;
@@ -82,7 +81,6 @@ async function loginUser(req, res) {
         }
     })
 }
-
 function logoutUser(req, res) {
     res.clearCookie("token");
     res.status(200).json({
