@@ -12,6 +12,7 @@ function AppRoutes() {
         <>
             <Router>
                 <Routes>
+                    <Route path='/register' element={<UserRegister />} />
 
                     <Route path='/user/register' element={<UserRegister />} />
                     <Route path='/' element={<Home />} />
