@@ -8,6 +8,10 @@ html
 css 
 js 
 React.js
+Node.js 
+Express.js
+Mongodb 
+Rest full api
 
 
 
