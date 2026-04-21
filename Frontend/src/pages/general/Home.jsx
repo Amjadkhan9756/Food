@@ -24,7 +24,7 @@ const Home = () => {
         const response = await axios.post("http://localhost:8080/api/food/like", { foodId: item._id }, { withCredentials: true })
         if (response.data.like) {
             console.log("Video liked");
-            setVideos((prev) => prev.map((v) => v._id === item._ === item._id ? { ...v, likeCount: v.likeCount + 1 } : v))
+            setVideos((prev) => prev.map((v) => v._id  === item._id ? { ...v, likeCount: v.likeCount + 1 } : v))
         }
         else {
             console.log("Video unliked");

@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const foodPartnerModel = require("../models/foodpartner.model.js");
 
 
+
 async function registerUser(req, res) {
 
     const { fullName, email, password } = req.body;
