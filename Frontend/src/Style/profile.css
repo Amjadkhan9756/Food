@@ -112,3 +112,6 @@
   .profile-meta { grid-template-columns: 96px 1fr; }
   .profile-avatar { width: 96px; height: 96px; }
 }
+@media (max-width: 680px) {
+
+}
