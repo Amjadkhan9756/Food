@@ -52,3 +52,58 @@
   width: fit-content;
   box-shadow: var(--shadow-sm);
 }
+
+.profile-business {
+  font-size: 1.25em; font-weigth:70;
+}
+.profile-address{
+  font-size: 1.05rem; color:var(--color-text-secondary);
+}
+/* Stats */
+
+.profile-stats {
+  display:grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap:var(--space-6);
+  border-top:1px dashed var(--color-border);
+  padding-top: var(--space-6);
+}
+
+.profile-sat{
+  display: grid;
+  grid-template-rows:auto auto;
+  justify-items:center;
+  gap: var(--space-2);
+}
+
+.profile-stat-value {
+  font-size:2rem;
+  font-weight: 800;
+}
+
+.profile-sep {
+  height: 1px;
+  border:none;
+  background:var(--color-border);
+}
+
+/*grid of video*/
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+}
+
+.profile-grid-item{
+  border:none;
+  aspect-ratio: 3/4;
+}
+
+.profile-grid-video{
+  display: grid;
+  place-items: center;
+  height: 100%;
+  background:var(--color-surface);
+  color:var(--color-text-secondary);
+  font-size:1.5rem;
+}
