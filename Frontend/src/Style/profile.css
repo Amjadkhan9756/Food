@@ -115,3 +115,11 @@
 @media (max-width: 680px) {
 
 }
+
+@media (max-width : 420){
+  .profile-meta { grid-template-columns: 72px 1fr;}
+  .profile-avatar {width: 72px; height: 72px;}
+  .profile-stat-label {font-size:1rem;}
+  .profile-stat-value {font: size 1.5em;}
+
+}
