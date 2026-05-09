@@ -35,7 +35,11 @@ const CreateFood = () =>{
         setVideoFile(file);
 
     }
+   const onDragOver = (e) => {
+        e.preventDefault();
+    };
 
+    const openFileDialog = () => fileInputRef.current?.click();
 
 
 
