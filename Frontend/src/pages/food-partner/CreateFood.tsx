@@ -41,7 +41,21 @@ const CreateFood = () =>{
 
     const openFileDialog = () => fileInputRef.current?.click();
 
+    const onSubmit = async (e) =>{
+        e.preventDefault();
+        const formData = new FormData();
 
+        formData.append('name',name);
+        formData.append('description',description);
+        formData.append("video",videoFile);
+
+        const response = await axios.post("http://localhost:8080.api/food",formData,{withCredentials:true});
+        console.log(response.data);
+        navigate("/");
+    }
+
+    const isDisable = useMemo(()=>!name.trim() || videoFile,[name,videoFile]);
+    
 
 
 
