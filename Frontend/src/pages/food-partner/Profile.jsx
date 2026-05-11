@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import "../../style/profile.css";
 import axios from 'axios';
@@ -8,10 +8,10 @@ import axios from 'axios';
 const Profile = () => {
     const { id } = useParams()
     const [profile, setProfile] = useState(null);
-    const [video, setVideos] = useState([]);
+    const [videos, setVideos] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhpst:8080/api/food-partner/${id}`, { withCredentials: true })
+        axios.get(`http://localhost:8080/api/food-partner/${id}`, { withCredentials: true })
             .then(res => {
                 setProfile(res.data.foodPartner)
                 setVideos(res.data.foodPartner.foodItems)
@@ -51,19 +51,18 @@ const Profile = () => {
 
             <section className="profile-grid" aria-label="Videos">
                 {videos.map((v) => (
-                    <div key={v.id} className="profile-grid-item">
-                        {/* Placeholder tile; replace with <video> or <img> as needed */}
-
-
+                    <div key={v._id || v.id} className="profile-grid-item">
                         <video
                             className="profile-grid-video"
                             style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                            src={v.video} muted ></video>
-
-
+                            src={v.video}
+                            muted
+                        ></video>
                     </div>
                 ))}
             </section>
         </main>
     )
 }
+
+export default Profile;

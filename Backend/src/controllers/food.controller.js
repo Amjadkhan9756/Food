@@ -53,7 +53,53 @@ async function getFoodItems(req, res) {
 
 
 
+async function likeFood(req, res) {
+    const { foodId } = req.body;
+    const foodItem = await foodModel.findById(foodId);
+    if (!foodItem) {
+        return res.status(404).json({ message: "Food not found" });
+    }
+
+    foodItem.likeCount = (foodItem.likeCount || 0) + 1;
+    await foodItem.save();
+
+    return res.status(200).json({
+        message: "Food liked",
+        like: true,
+        food: foodItem
+    });
+}
+
+async function getSavedFoods(req, res) {
+    const savedFoods = await foodModel.find({ savesCount: { $gt: 0 } });
+    return res.status(200).json({
+        message: "Saved foods fetched successfully",
+        savedFoods: savedFoods.map((food) => ({ food }))
+    });
+}
+
+async function toggleSaveFood(req, res) {
+    const { foodId } = req.body;
+    const foodItem = await foodModel.findById(foodId);
+    if (!foodItem) {
+        return res.status(404).json({ message: "Food not found" });
+    }
+
+    const isSaved = (foodItem.savesCount || 0) === 0;
+    foodItem.savesCount = isSaved ? (foodItem.savesCount || 0) + 1 : Math.max(0, foodItem.savesCount - 1);
+    await foodItem.save();
+
+    return res.status(200).json({
+        message: isSaved ? "Food saved" : "Food unsaved",
+        save: isSaved,
+        food: foodItem
+    });
+}
+
 module.exports = {
     createFood,
-    getFoodItems
+    getFoodItems,
+    likeFood,
+    getSavedFoods,
+    toggleSaveFood
 };
