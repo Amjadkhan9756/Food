@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
+// @ts-ignore
+import '../../style/create-food.css'
 import { useNavigate } from 'react-router-dom';
 
 const CreateFood = () => {
@@ -8,7 +10,7 @@ const CreateFood = () => {
     const [ videoFile, setVideoFile ] = useState<File | null>(null);
     const [ videoURL, setVideoURL ] = useState('');
     const [ fileError, setFileError ] = useState('');
-    const fileInputRef = useRef<HTMLInputElement | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const navigate = useNavigate();
 
@@ -54,10 +56,10 @@ const CreateFood = () => {
         formData.append('name', name);
         formData.append('description', description);
         if (videoFile) {
-            formData.append('video', videoFile);
+            formData.append("mama", videoFile);
         }
 
-        const response = await axios.post("http://localhost:8080/api/food", formData, {
+        const response = await axios.post("http://localhost:3000/api/food", formData, {
             withCredentials: true,
         })
 
